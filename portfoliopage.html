@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anne Achieng Alwala - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 4rem;
+            color: white;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-duration {
+            background: #f8f9fa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .experience-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .education-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .education-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border-radius: 0 0 0 100%;
+            opacity: 0.1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .skills-category h3 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .award-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .award-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Section fade-in animation */
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Anne Alwala</div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('hero')">Home</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('experience')">Experience</a></li>
+                <li><a onclick="scrollToSection('education')">Education</a></li>
+                <li><a onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a onclick="scrollToSection('awards')">Awards</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Anne Achieng Alwala</h1>
+            <p class="subtitle">Computer Science Student & Tech Innovator</p>
+            <p class="description">Passionate about AI, software engineering, and creating innovative solutions that make a difference. Currently specializing in personalization systems and database optimization.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary" onclick="scrollToSection('projects')">View My Work</a>
+                <a href="#about" class="btn btn-secondary" onclick="scrollToSection('about')">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <div class="profile-image">
+                    <img src="/ANNE.jpeg" alt="Anne Alwala" width="400" height="400">
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Hello! I'm Anne</h3>
+                <p>I'm a Computer Science graduate from Ashesi University with a passion for technology entrepreneurship and innovative problem-solving. My journey spans across multiple continents and diverse tech environments, from Silicon Valley to Ghana, South Africa, and Indonesia.</p>
+                <p>Currently working as a Personalization Expert at Buck Press Ltd, I specialize in implementing and optimizing personalization printing systems and secure database solutions. I'm driven by the opportunity to create technology that enhances user experiences and drives operational excellence.</p>
+                <p>My academic excellence is reflected in my Magna Cum Laude honors and recognition from prestigious programs including Harvard's Aspire Leaders Program and UC Berkeley's Technology Entrepreneurship program.</p>
+                <div class="contact-info">
+                    <a href="mailto:anne.alwala@berkeley.edu" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>annealwala7@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/anne-alwala/" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Tripple3A" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="tel:+233599192091" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+233599192091</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Personalization Expert</div>
+                        <div class="experience-company">Buck Press Ltd</div>
+                        <div style="color: #666; font-size: 0.9rem;">Ghana • Full-time</div>
+                    </div>
+                    <div class="experience-duration">Jun 2025 - Present</div>
+                </div>
+                <div class="experience-description">
+                    Technical specialist responsible for implementing, maintaining, and optimizing personalization printing systems and secure database solutions. Collaborate cross-functionally to enhance quality, cost efficiency, and delivery performance through advanced data management, system integration, and process improvement initiatives.
+                </div>
+                <div class="skills-tags">
+                    <span class="skill-tag">Database Management</span>
+                    <span class="skill-tag">SQL Programming</span>
+                    <span class="skill-tag">System Integration</span>
+                    <span class="skill-tag">Process Optimization</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Corporate Venture Capital Intern</div>
+                        <div class="experience-company">MANN+HUMMEL</div>
+                        <div style="color: #666; font-size: 0.9rem;">Raleigh, North Carolina • Remote</div>
+                    </div>
+                    <div class="experience-duration">Sep 2024 - Jul 2025</div>
+                </div>
+                <div class="experience-description">
+                    Worked with the Director of Corporate Ventures on optimizing and automating deal sourcing, business unit alignment, and diligence processes. Participated in market, business model, and technical research for investment candidates, attending relevant accelerator and industry conference pitch sessions.
+                </div>
+                <div class="skills-tags">
+                    <span class="skill-tag">Market Research</span>
+                    <span class="skill-tag">Due Diligence</span>
+                    <span class="skill-tag">Business Analysis</span>
+                    <span class="skill-tag">Investment Research</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Undergraduate Research Assistant</div>
+                        <div class="experience-company">University of California, Berkeley</div>
+                        <div style="color: #666; font-size: 0.9rem;">Berkeley, California • Hybrid</div>
+                    </div>
+                    <div class="experience-duration">Sep 2024 - Jan 2025</div>
+                </div>
+                <div class="experience-description">
+                    Working on providing community health promoters with an AI assistant to help improve healthcare accessibility for underserved populations worldwide. Focusing on AI system development and healthcare technology integration.
+                </div>
+                <div class="skills-tags">
+                    <span class="skill-tag">Research</span>
+                    <span class="skill-tag">AI Development</span>
+                    <span class="skill-tag">Healthcare Technology</span>
+                    <span class="skill-tag">Community Impact</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">AI Prompt Engineer</div>
+                        <div class="experience-company">Bukit Vista</div>
+                        <div style="color: #666; font-size: 0.9rem;">Indonesia, USA</div>
+                    </div>
+                    <div class="experience-duration">Jun 2024 - Apr 2025</div>
+                </div>
+                <div class="experience-description">
+                    Engineered AI prompt systems using programmatic logic and algorithmic patterns. Developed reusable code templates with conditional logic and built automated AI interaction frameworks requiring advanced data structure implementation.
+                </div>
+                <div class="skills-tags">
+                    <span class="skill-tag">AI Engineering</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Algorithm Design</span>
+                    <span class="skill-tag">Automation</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Web Developer</div>
+                        <div class="experience-company">Benaks Humanitarian Organization</div>
+                        <div style="color: #666; font-size: 0.9rem;">Accra, Ghana</div>
+                    </div>
+                    <div class="experience-duration">Jun 2023 - Mar 2024</div>
+                </div>
+                <div class="experience-description">
+                    Implemented web applications using React, Node.js, and Python (Django/Flask). Designed and maintained relational databases using MySQL and PostgreSQL, and implemented secure authentication systems using OAuth2 and JWT.
+                </div>
+                <div class="skills-tags">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Database Design</span>
+                    <span class="skill-tag">Authentication</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Software Engineering Intern</div>
+                        <div class="experience-company">Microsoft ADC Hackathon</div>
+                        <div style="color: #666; font-size: 0.9rem;">Cape Town, South Africa</div>
+                    </div>
+                    <div class="experience-duration">Jun 2023 - Aug 2023</div>
+                </div>
+                <div class="experience-description">
+                    Optimized prompt structures to improve chatbot response accuracy by 10%. Used Python and TensorFlow/PyTorch for developing machine learning models and implemented backend services using Flask/Django to support AI-based applications.
+                </div>
+                <div class="skills-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Django</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>BSc. Computer Science</h3>
+                <p><strong>Ashesi University</strong></p>
+                <p>GPA: 3.79 | Class of 2025</p>
+                <p style="color: #667eea; font-weight: 600;">Magna Cum Laude Honors</p>
+                <p>Berekuso, Ghana</p>
+                <p style="color: #666;">Sep 2021 - May 2025</p>
+                <div style="margin-top: 1rem;">
+                    <span class="skill-tag">Computer Software Engineering</span>
+                    <span class="skill-tag">Computer Science</span>
+                </div>
+            </div>
+            
+            <div class="education-card">
+                <div class="education-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>Technology Entrepreneurship Program</h3>
+                <p><strong>University of California, Berkeley</strong></p>
+                <p>Sutardja Center for Technology Entrepreneurship</p>
+                <p>Berkeley, USA</p>
+                <p style="color: #666;">Aug 2024 - Dec 2024</p>
+                <div style="margin-top: 1rem;">
+                    <p style="color: #666; font-size: 0.9rem;">Working on startup "TruthScope" - developing innovative browser plugins and APIs that integrate with social media platforms.</p>
+                    <span class="skill-tag">Entrepreneurship</span>
+                    <span class="skill-tag">Innovation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+
+
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Chatbot Optimization</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Jun 2023 - Aug 2023</p>
+                <p style="margin-bottom: 1.5rem;">Microsoft ADC hackathon project where I optimized prompt structures to improve chatbot response accuracy by 10%. Utilized Python, TensorFlow, and PyTorch for machine learning model development.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">Performance Optimization</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>Thread Matrix Multiplication</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Apr 2023 - May 2023</p>
+                <p style="margin-bottom: 1.5rem;">Implemented multi-threaded algorithms in C++, leveraging parallel processing. Engineered thread synchronization and memory management for optimal data handling using modern C++ features and STL threading libraries.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Multi-threading</span>
+                    <span class="skill-tag">Parallel Processing</span>
+                    <span class="skill-tag">Memory Management</span>
+                </div>
+            </div>
+
+
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Humanitarian Web Platform</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Jun 2023 - Mar 2024</p>
+                <p style="margin-bottom: 1.5rem;">Full-stack web application for Benaks Humanitarian Organization using React, Node.js, and Python. Implemented secure authentication systems and maintained relational databases for efficient data management.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Database Design</span>
+                </div>
+            </div>
+
+
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Carbon Footprint Calculator</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Aug 2024 - Sep 2024</p>
+                <p style="margin-bottom: 1.5rem;">Built and deployed a Java command-line application with multiple input modules. Created a modular codebase handling complex calculations across classes and designed an efficient user interface system with branching logic.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Object-Oriented Programming</span>
+                    <span class="skill-tag">Modular Design</span>
+                    <span class="skill-tag">CLI Development</span>
+                </div>
+            </div>
+
+           
+
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Healthcare Assistant</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Sep 2024 - Jan 2025</p>
+                <p style="margin-bottom: 1.5rem;">Research project at UC Berkeley developing an AI assistant for community health promoters to improve healthcare accessibility for underserved populations worldwide. Focus on practical AI applications in healthcare.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">AI/ML</span>
+                    <span class="skill-tag">Healthcare Tech</span>
+                    <span class="skill-tag">Research</span>
+                    <span class="skill-tag">Social Impact</span>
+                </div>
+            </div>
+
+
+            <div class="project-card">
+                <div class="project-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>TruthScope</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Dec 2024 - Present</p>
+                <p style="margin-bottom: 1.5rem;">Startup project: Building and deploying a neural network AI model as well as developing a browser plugin and API that integrate seamlessly with social media platforms for content verification and truth assessment in digital media especially with deepfake media.</p>
+                <div class="skills-tags">
+                    <span class="skill-tag">Browser Extensions</span>
+                    <span class="skill-tag">API Development</span>
+                    <span class="skill-tag">Social Media Integration</span>
+                    <span class="skill-tag">Entrepreneurship</span>
+                </div>
+            </div>
+
+            
+
+            
+
+           
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skills-category">
+                <h3><i class="fas fa-code" style="margin-right: 0.5rem; color: #667eea;"></i>Programming Languages</h3>
+                <div class="skills-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">C#</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">SQL</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-tools" style="margin-right: 0.5rem; color: #667eea;"></i>Technologies & Frameworks</h3>
+                <div class="skills-list">
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">Django</span>
+                    <span class="skill-item">Flask</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">PyTorch</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-database" style="margin-right: 0.5rem; color: #667eea;"></i>Databases & Tools</h3>
+                <div class="skills-list">
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">PostgreSQL</span>
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">Power BI</span>
+                    <span class="skill-item">Tableau</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-lightbulb" style="margin-right: 0.5rem; color: #667eea;"></i>Core Competencies</h3>
+                <div class="skills-list">
+                    <span class="skill-item">Data Structures & Algorithms</span>
+                    <span class="skill-item">Object-Oriented Programming</span>
+                    <span class="skill-item">Multi-threading</span>
+                    <span class="skill-item">Machine Learning</span>
+                    <span class="skill-item">System Integration</span>
+                    <span class="skill-item">Database Management</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-users" style="margin-right: 0.5rem; color: #667eea;"></i>Soft Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-item">Leadership</span>
+                    <span class="skill-item">Problem Solving</span>
+                    <span class="skill-item">Teamwork</span>
+                    <span class="skill-item">Strategic Thinking</span>
+                    <span class="skill-item">Technology Entrepreneurship</span>
+                    <span class="skill-item">Growth Mindset</span>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-rocket" style="margin-right: 0.5rem; color: #667eea;"></i>Specializations</h3>
+                <div class="skills-list">
+                    <span class="skill-item">AI Prompt Engineering</span>
+                    <span class="skill-item">Personalization Systems</span>
+                    <span class="skill-item">Process Optimization</span>
+                    <span class="skill-item">Venture Capital Research</span>
+                    <span class="skill-item">Healthcare Technology</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section">
+        <h2 class="section-title">Awards & Recognition</h2>
+        <div class="awards-grid">
+
+
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Equity Leaders Program Scholar</h3>
+                <p><strong>Equity Group Foundation</strong></p>
+                <p style="color: #666; margin-top: 0.5rem;">2019</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">Recipient of the Equity Leaders Program (ELP) scholarship, awarded to top national high school graduates in Kenya for exceptional academic performance, leadership potential, and community impact.</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Mastercard Foundation Scholarship Award</h3>
+                <p><strong>Ashesi University</strong></p>
+                <p style="color: #666; margin-top: 0.5rem;">2021</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">Recipient of the highly competitive Mastercard Foundation Scholarship, awarded to outstanding students who demonstrate strong academic achievement, leadership qualities, and a dedication to driving social and economic change in their communities.</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Aspire Leaders Program</h3>
+                <p><strong>Harvard University</strong></p>
+                <p style="color: #666; margin-top: 0.5rem;">2022</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">Prestigious leadership development program recognizing outstanding potential and commitment to making positive impact.</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Dean's List</h3>
+                <p><strong>Ashesi University</strong></p>
+                <p style="color: #666; margin-top: 0.5rem;">2023</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">Academic excellence recognition for maintaining high GPA and demonstrating outstanding scholastic achievement.</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Global Business Concept Challenge Winner</h3>
+                <p><strong>Global Business School Network (GBSN)</strong></p>
+                <p style="color: #666; margin-top: 0.5rem;">2023</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">International competition winner for innovative business concept and entrepreneurial excellence.</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Magna Cum Laude Honors</h3>
+                <p><strong>Ashesi University</strong></p>
+                <p style="color: #666; margin-top: 0.5rem;">June 2025</p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">Academic distinction for maintaining GPA of 3.79, demonstrating consistent excellence throughout university studies.</p>
+            </div>
+
+          
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="mailto:annealwala7@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/anne-alwala/" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Tripple3A" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="tel:+233599192091" class="social-link" title="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Anne Achieng Alwala. Designed with passion and innovation.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.9rem;">Creating technology solutions that make a difference 🚀</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const navHeight = document.getElementById('navbar').offsetHeight;
+            const sectionTop = section.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: sectionTop,
+                behavior: 'smooth'
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for section animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.experience-card, .project-card, .education-card, .award-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero subtitle
+        const subtitle = document.querySelector('.hero .subtitle');
+        const originalText = subtitle.textContent;
+        subtitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                subtitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        // Start typing effect after a delay
+        setTimeout(typeWriter, 1000);
+
+        // Add floating animation to skill items
+        document.querySelectorAll('.skill-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.style.animation = 'float 3s ease-in-out infinite';
+        });
+
+        // Add CSS for floating animation
+        const floatingCSS = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-5px); }
+            }
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = floatingCSS;
+        document.head.appendChild(style);
+
+        // Add click effects to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255,255,255,0.5);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation CSS
+        const rippleCSS = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = rippleCSS;
+        document.head.appendChild(rippleStyle);
+    </script>
+</body>
+</html>
